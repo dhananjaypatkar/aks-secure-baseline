@@ -16,7 +16,12 @@ Now that you have the [prerequisites](./01-prerequisites.md) met, follow the ste
    openssl req -x509 -nodes -days 365 -newkey rsa:2048 -out appgw.crt -keyout appgw.key -subj "/CN=bicycle.contoso.com/O=Contoso Bicycle"
    openssl pkcs12 -export -out appgw.pfx -in appgw.crt -inkey appgw.key -passout pass:
    ```
+   If you are using git bash on windows, set following environment variable [https://github.com/git-for-windows/git/issues/577#issuecomment-166118846]
+    ```bash
+    export MSYS_NO_PATHCONV=1
+    ```
 
+   
 1. Base64 encode the client-facing certificate
 
    :bulb: No matter if you used a certificate from your organization or you generated one from above, you'll need the certificate (as `.pfx`) to be base 64 encoded for proper storage in Key Vault later.
